@@ -1,0 +1,13 @@
+Create 2 ec2 instances
+
+keep tcp rule in security group for 49187 port.
+
+add hostnames of master/agent in each other
+
+install java on slave as well
+
+ wget http://masterIP:8080/jnlpJars/slave.jar
+
+ java -jar slave.jar -jnlpUrl http://172.31.91.165:8080/computer/aaaa/slave-agent.jnlp -secret 43220740cea83c69aff22bcd0c34430bcc86771c42c6b4e883c5dc4b68ea86a2
+
+the above will be generated from jenkins console (with master IP)

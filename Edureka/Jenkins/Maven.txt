@@ -1,0 +1,23 @@
+Text Direction: Create our First Maven-based Jenkins Project
+Section 2, Lecture 18
+Command to clone the repo:
+git clone https://github.com/jleetutorial/maven-project.git 
+
+Git repo webpage:
+https://github.com/jleetutorial/maven-project 
+
+URL of the Git repo (the one that Jenkins needs):
+https://github.com/jleetutorial/maven-project.git 
+
+
+
+Maven Project type
+In this lecture you might NOT see the Maven Project  type available to choose from when you click the New Item  button.
+
+In order to have the Maven Project  type, you will need to install the Maven Project Plugin.
+
+https://wiki.jenkins-ci.org/display/JENKINS/Maven+Project+Plugin If you are building a complicated maven project, definitely pick the maven project type here, this is a project template that Jenkins has reserved specifically for Maven-based projects.
+
+Jenkins understands the pom dot XML file format and would take advantage of it which can greatly reduce the manual configuration.
+
+But considering our maven project is a very simple one and the free style project would suffice, so here we just  go with the free style project.

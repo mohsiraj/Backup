@@ -1,0 +1,18 @@
+Jenkins file 
+
+v0.1: https://github.com/jleetutorial/maven-project/blob/v0.1/Jenkinsfile
+
+v0.2: https://github.com/jleetutorial/maven-project/blob/v0.2/Jenkinsfile
+
+v0.3: https://github.com/jleetutorial/maven-project/blob/v0.3/Jenkinsfile
+
+
+
+Jenkinsfile:
+v0.4: https://github.com/jleetutorial/maven-project/blob/v0.4/Jenkinsfile
+
+Deploy Tomcat to local box instead:
+If you want to deploy tomcat on local box instead of to EC2 boxes on the cloud. You need to make two changes in the Jenkinsfile.
+
+Use cp instead of scp command to copy artifact to tomcat directory on the local box.
+Use localhost as the server IPs.

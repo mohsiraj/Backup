@@ -1,0 +1,34 @@
+==========================
+Delivery Pipeline
+compile
+code review -- PMD plugin -- program mistake ditector 
+Unit test -- Junit plugin 
+QA metric check -- cobertura plugin 
+Package 
+Deploy
+
+=============================
+
+Maven ( is a build tool which helps builds the code to deployable format )
+	install & configure with jenkins
+goals
+	compile   --> compile
+	code review --> -P metrics pmd:pmd
+ 		post build action -- publish PMD analysis results -- target/pmd.xml
+	unit test --> test 
+		maven (  surefire plugin ) to execute unit tests
+		Junit ( jenkins plugin ) 
+		post build action -- publish junit results -- target/surefire-reports/*.xml
+	metrick check --> cobertura:cobertura -Dcobertura.report.format=xml
+		post build action -- publish cobertura coverage report -- target/site/cobertura/coverage.xml
+	packaging --> package
+		post build action -- 
+	
+
+build pipeline plugin
+	goto veiw & build pipeline view
+
+
+
+
+

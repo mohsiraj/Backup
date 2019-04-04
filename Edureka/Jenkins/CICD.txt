@@ -1,0 +1,18 @@
+Jenkins ( CICD )
+
+CI ( continuous Integration )
+
+build lifecycle  : maven goal           : post build action 
+	compile      : compile              : NA
+	codereview   : -p metrics pmd:pmd   : **/pmd.xml ( publish pmd analysis results )
+	unit test    : test                 : target/surefire-reports/*.xml  ( publish Juni test results )
+	metric check : cobertura:cobertura -Dcobertura.report.format=xml : target/site/cobertura/coverage.xml ( publish cobertura coverage report )
+	package      : package -- Execute Sonarqube Scanner
+	sonar        : 	sonar.projectKey=sampleapp
+					sonar.ProjectName=sampleapp
+					sonar.sources=src/main/java/
+					sonar.java.binaries=target/classes/
+					sonar.language=java
+					sonar.java.source=1.8
+					
+CD ( continuous Delivery/Deployment )

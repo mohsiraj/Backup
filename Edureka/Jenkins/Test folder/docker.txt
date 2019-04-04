@@ -1,0 +1,32 @@
+
+sudo yum remove -y docker docker-engine docker.io docker-ce
+sudo yum install -y apt-transport-https ca-certificates curl software-properties-common
+
+curl -fsSL https://download.docker.com/linux/centos/gpg | sudo yum add -
+https://download.docker.com/linux/centos/
+https://download.docker.com/linux/centos/
+curl -fsSL https://download.docker.com/linux/debian/gpg | sudo yum add -
+
+
+Install needed packages:
+$ sudo yum install -y yum-utils device-mapper-persistent-data lvm2
+Configure the docker-ce repo:
+$ sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+$ yum install http://vault.centos.org/centos/7.3.1611/extras/x86_64/Packages/container-selinux-2.9-4.el7.noarch.rpm
+Install docker-ce:
+$ sudo yum install docker-ce
+Add your user to the docker group with the following command.
+$ sudo usermod -aG docker $(whoami)
+Set Docker to start automatically at boot time:
+$ sudo systemctl enable docker.service
+Finally, start the Docker service:
+$ sudo systemctl start docker.service
+
+$ docker version
+
+$ docker run hello-world
+$ docker image ls
+$ docker images
+$ docker container ls –all
+$ docker pull jenkins/jenkins:latest
+$

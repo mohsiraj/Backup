@@ -1,0 +1,155 @@
+---Google drive
+
+https://drive.google.com/drive/folders/1pVEpWOcX215FV7IalxKOcp-9FnYssnJy?usp=sharing
+
+
+
+
+sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+
+
+sudo wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat/jenkins.repo
+sudo rpm --import https://jenkins-ci.org/redhat/jenkins-ci.org.key
+sudo yum install jenkins
+
+
+Installation of a stable version
+There is also a LTS YUM repository for the LTS Release Line
+sudo wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat-stable/jenkins.repo
+sudo rpm --import https://jenkins-ci.org/redhat/jenkins-ci.org.key
+sudo yum install jenkins
+
+
+ yum install java-1.8.0-openjdk
+
+MAVEN_HOME="/opt/apache-maven-3.6.0"
+JAVA_HOME="/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.201.b09-0.amzn2.x86_64"
+PATH=$JAVA_HOME/bin:$MAVEN_HOME/bin:$PATH
+
+java-1.8.0-openjdk-1.8.0.201.b09-0.amzn2.x86_64
+
+export JAVA_HOME=/bin/java
+export PATH=$JAVA_HOME/bin:$PATH
+
+
+
+/bin/java
+1.8.0_201
+export JAVA_HOME=/opt/jdk1.8.0_201/bin/java and hit enter
+?	Type export JRE_HOME=/opt/jdk1.8.0_201/bin/jre/bin/java and hit enter
+?	Type export PATH=$PATH:$HOME/bin:JAVA_HOME:JRE_HOME and hit enter
+
+?	echo $JAVA_HOME
+
+
+/opt/jdk1.8.0_201/bin/java
+/opt/jdk1.8.0_201/bin/jre/bin/java
+
+
+github.com/edureka-devops/jenkins-demo.git
+
+clean cobertura:cobertura -Pmetrics
+
+
+ec2-52-71-226-64.compute-1.amazonaws.com
+http://18.219.163.187:8080/github-webhook/
+http://ec2-52-71-226-64.compute-1.amazonaws.com:8080/github-webhook/
+systemctl restart httpd.service
+
+
+[root@jenkins ~]# firewall-cmd --zone=public --add-port=8080/tcp --permanent
+success
+[root@jenkins ~]# firewall-cmd --zone=public --add-service=http --permanent
+success
+[root@jenkins ~]# firewall-cmd --reload
+
+192.168.1.220
+
+?	Type export JAVA_HOME=/opt/1.8.0_201/bin/java and hit enter
+?	Type export JRE_HOME=/opt/jdk1.8.0_201/bin/jre/bin/java and hit enter
+?	Type export PATH=$PATH:$HOME/bin:JAVA_HOME:JRE_HOME and hit enter
+?	echo $JAVA_HOME
+/opt/1.8.0_201/bin/java
+
+?	echo $JRE_HOME
+/opt/jdk1.8.0_201/bin/jre/bin/java
+
+useradd jenkins-slave01 
+sudo su - jenkins-slave01
+ssh-keygen -t rsa -N "" -f /home/jenkins-slave01/.ssh/id_rsa 
+
+cat id_rsa.pub > authorized_keys
+?	Type chmod 700 authorized_keys
+?	Type more id_rsa
+
+
+
+-----BEGIN RSA PRIVATE KEY-----
+MIIEpQIBAAKCAQEAvwdSe29DNxvTR02Ts1beDO1EtYthodAA9krerm8oAtP4KoNF
+tN9qgnwlYw6wX3WVAQHmFvmQf0DI1+o54ljYXIgHTArE4BZqfACR7rLsZtLMCS0m
+Ok4+GYRShXGe31ip7yJoRrtf4GgBToCmZdVOpu3r3C7UfvB9YSpRPPsXJr/+cm44
+nA/AbXNFkt9P9ol4X+scs02raW7DOf8+dJzVpI+/ue6/gM3zBCgiGa9SSXhHj1Yr
+UlF2Ply2vvHc08FqO6S4XeK/I/uegVkPZBMDWK38oe7pb3lqXe/EpXcjwo3xK+/q
+c1NzfiPGDaJOIn1V47JqUXKHhXhUDk10lLSPywIDAQABAoIBADrFgu/s/E4BJpCC
+YpXDfQ+XFBOSrVf+Sb18rWQXWMT9+BUETDbooblBfrMqOsMzxsMHlYWuBHHSObiM
+HIDx+qcFRtFzYrzayKob9snsjGTaJ+IO3PsFRX/OQSFDIrDuc2HaQSC51zaQaQ6A
+8DDWXptnCbC1S7U+QiTZwyKy0Z2e3eHcxnBC8pQGUwCfI/GB6K/tFs3QNiTMgMbZ
+W7SK5k5O0RcYJV7wtn+RegmAhX3UtlwcSaBms7eS5ztILxiZYdnSpa9MXMhaedfr
+q0LT/+IgO0PMi4Y60+SBHPqdpI+dy3aF4hN8jN059xRrFW8GPY5QXOBtj1u3bJaE
+7QzsNMECgYEA6VHgFe5tIRXVvlj0667RWO+r2t6v/vrugSNA7WrYtJ2BREe8CBNA
+GZTZZMkiizLToBfjKMtebH2X+IuBdnikfOnRKM3hIiIGkQ24h0NGuZIbCxrdfxM/
+tC0yPgIAlQAP/4axb89GyHrBWr80bVkWKzlQ+ZzqEK4h2wxINZ/76aECgYEA0ZkJ
+cLXr0eZwlQptxKa3bAnnPE8MXMYFyvpw79j3OMR2NS9FkKBTkRYgpLjEwbnd+f8K
+N1K/8h8Lh0+/PY1SWSlK89Phnfanb6q8djg+w4IjZkjRw4FiOYgeI+0vFjC0unmd
+SgIpLhHPU3hZ3seArecIb2mud7a14hkFIxoIeesCgYEAj9mxBRSJJ/rkW4VRC/Yu
+kFzEYh8l91kSr3/iyf40ObdaOZTYs0nbHWqOVftEVvoxS+UuYrpwLweIKO8qFLbx
+AyrNkBDPG1JLJieFe6/Y7RTNo50ervhZMGclMOHfJf5x3qNWxo7PH0+/4ok8c6aX
+anLeH+fE0B/sM7dw1c8ba8ECgYEAlubntQ5FSknupF9tyDd/t3kp0nHXJLQtV4YX
+6Zb75xMLSB9Qpl/Hyp1zwySEBDYdavAEGvCo4VkYo8L2nQoyT587J3FU7rW2tt7l
+8PdtuLTpZ6rl2yw728/0Y0lQrVlDxT3p0G7d1x1bd20exxY7vvinSg98XRRevvnk
+iPElSSECgYEAn1V1KuCUjM3T58qlRgciO5CeNCcvcewM+5KRacuzQKwZXqIEjdsi
+rbfWFdOcJ99PTSENsO0ZDMiPzh1/Z7PAhN7D5fGBYd+BJ93kgvqBCyNwdhoeMRS9
+ul0wwA4V33ZGtNxn0ccb42dIVa0aavrDmHx55UNflM/42f/7i1xdFqA=
+-----END RSA PRIVATE KEY-----
+
+
+export JAVA_HOME=/opt/1.8.0_201/bin/java
+export JRE_HOME=/opt/jdk1.8.0_201/jre/bin/java
+export PATH=$PATH:$HOME/bin:JAVA_HOME:JRE_HOME
+
+
+
+ssh-keyscan -H 172.31.84.105 >>/var/lib/jenkins/.ssh/known_hosts
+
+
+-----------------------
+  1  sudo yum update -y
+    2  sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+    3  sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+    4  yum install java-1.8.0-openjdk
+    5  sudo yum update -y
+    6  suod yum install -y nginx
+    7  sudo yum install nginx -y
+    8  yum install -y nginx
+    9  yum install jenkins -y
+   10  sudo sytemctl status jenkins
+   11  systemctl status jenkins | grep Active
+   12  systemctl status nginx | grep Active
+   13  systemctl status jenkins
+   14  systemctl enable jenkins
+   15  systemctl start jenkins
+   16  cat /var/lib/jenkins/secrets/initialAdminPassword
+   17  yum install git
+   18  yum install maven
+   19  mvn -v
+   20  java -version
+   21  git -v
+   22  git -version
+   23  git --version
+   24  cd /var/lib/jenkins/workspace
+   25  cd Automated-Testing/maven-project-master
+   26  ls
+   27  history
+
+

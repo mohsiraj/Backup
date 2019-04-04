@@ -1,0 +1,42 @@
+Install Jenkins on the Master Node
+wget -q -O - http://pkg.jenkins-ci.org/debian/jenkins-ci.org.key | apt-key add -
+ 
+echo deb http://pkg.jenkins-ci.org/debian binary/ > /etc/apt/sources.list.d/jenkins.list
+ 
+apt-get update
+ 
+apt-get install jenkins
+Note: 
+There is a bug in the latest Jenkins which is 2.95. (Dec 15th, 2017)
+
+If apt-get install jenkins failed to install and start Jenkins for you, try to install a previous version of jenkins by running apt-get install jenkins=2.67
+
+
+-------------
+
+Trouble Shooting
+If you don't see the "Launch agent via execution of command on master" option in the add slave page. This is due to the fact that the latest version of Jenkins has removed that option from the default install and moved it to this plugin: https://plugins.jenkins.io/command-launcher
+
+The solution is to install the command-launcher Jenkins plugin first before you can add a slave.
+
+Install Jenkins Agent on the Slave Node
+running on master node:
+
+sudo -iu jenkins
+ 
+ssh root@<slave_ip> mkdir -p .ssh
+ 
+cat .ssh/id_rsa.pub | ssh root@<slave_ip> 'cat >> .ssh/authorized_keys'
+ 
+running on slave node:
+
+mkdir ~/bin
+ 
+cd bin
+ 
+wget http://<master_ip>:8080/jnlpJars/slave.jar
+ 
+sudo apt-get install default-jre 
+start slave agent: 
+
+ssh root@<slave_ip> java -jar /root/bin/slave.jar  

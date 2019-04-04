@@ -1,0 +1,109 @@
+======================================================
+in aws linux
+
+To remove java 1.7 and install java 1.8:
+sudo yum remove java-1.7.0-openjdk
+sudo yum install java-1.8.0
+
+sudo wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat-stable/jenkins.repo
+sudo rpm --import https://jenkins-ci.org/redhat/jenkins-ci.org.key
+sudo yum install jenkins
+
+-------------=========================-----------------------
+
+
+
+Install JAVA
+ 
+	sudo add-apt-repository ppa:webupd8team/java
+	sudo apt-get update
+	apt-get install -y oracle-java8-installer
+
+Install Jenkins
+
+	wget -q -O - https://pkg.jenkins.io/debian/jenkins-ci.org.key | sudo apt-key add -
+	echo deb https://pkg.jenkins.io/debian-stable binary/ | sudo tee /etc/apt/sources.list.d/jenkins.list
+	sudo apt-get update
+	sudo apt-get install jenkins
+	sudo systemctl start jenkins
+
+Install Maven  ( on Jenkins machine )
+
+	cd /tmp ; wget http://mirrors.estointernet.in/apache/maven/maven-3/3.6.0/binaries/apache-maven-3.6.0-bin.tar.gz
+	cd /tmp ; tar -xzf apache-maven-3.6.0-bin.tar.gz -C /opt
+
+Install SonarQube-runner ( on Jenkins machine )
+
+	cd /tmp ; wget http://repo1.maven.org/maven2/org/codehaus/sonar/runner/sonar-runner-dist/2.4/sonar-runner-dist-2.4.zip
+	cd /tmp ; unzip sonar-runner-dist-2.4.zip
+	cd /tmp ; mv sonar-runner-dist-2.4 /opt 
+	
+Set JAVA_HOME & MAVEN_HOME as environment variables on Jenkins machine
+
+	vi /etc/profile
+	MAVEN_HOME="/opt/apache-maven-3.6.0"
+	JAVA_HOME="/usr/lib/jvm/java-8-oracle"
+	PATH=$JAVA_HOME/bin:$MAVEN_HOME/bin:$PATH
+	close & save the file
+	source /etc/profile  -- to reload the configuration
+
+Install Plugins required for CI Pipeline
+
+	Manage Jenkins --> manage plugins -- Available -- search & install the below
+		pmd -- install without restart
+		cobertura -- install without restart
+		SonarQube Scanner for Jenkins -- install without restart
+		Build Pipeline Plugin  -- install without restart
+
+
+Install SonarQube ( container or download zip ) ( can be on any server - not necessarily on Jenkins machine )
+	if .zip download & installation follow below steps:
+	
+		cd /tmp ; wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-6.7.6.zip
+		cd /tmp ; unzip sonarqube-6.7.6.zip
+		cd /tmp ; mv sonarqube-6.7.6 /opt
+		groupadd devops
+		useradd devops -m -d /home/devops -s /bin/bash -g devops
+		passwd devops ( enter passwd )
+		cd /opt ; chown -R devops:devops sonarqube-6.7.6 ; chmod -R 755 sonarqube-6.7.6
+		cd /opt/sonarqube-6.7.6/bin/linux-x86-64/ ; ./sonar.sh start
+	
+		after starting successfully goto browser & hit below
+			http://<IP addr>:9000
+			login to sonarqube ( default credentials admin/admin )
+	
+	if docker --> run run below command ( ensure docker is installed on your machine )
+	
+		docker run -d --name sonarqube -p 9000:9000 sonarqube
+		after starting successfully goto browser & hit below
+			http://<IP addr>:9000
+			login to sonarqube ( default credentials admin/admin )
+			
+=================================================================================================================
+
+Java configuration in Jenkins console 
+	
+	Manage Jenkins --> Global Tool Configuration --> JDK --> Add JDK
+		Name: oracle-java1.8 ( can be any string )
+		JAVA_HOME: /path/to/javahome ( ex: /usr/lib/jvm/java-8-oracle )
+
+Maven Configuration in Jenkins console
+	
+	Manage Jenkins --> Global Tool Configuration --> Maven --> Add Maven
+		Name: maven3.6 ( can be any string )
+		MAVEN_HOME: /path/to/mavenhome ( /opt/apache-maven-3.6.0 )
+				
+SonarQube Runner Configuration in Jenkins console
+		
+	Manage Jenkins --> Global Tool Configuration --> SonarQube Scanner --> configure below
+		Name: sonar-runner ( can be any string )
+		SONAR_RUNNER_HOME: /path/to/sonar-runner ( /opt/sonar-runner-dist-2.4 )
+
+SonarQube configuration in Jenkins console
+
+	Manage Jenkins --> configure System --> SonarQube servers --> configure below
+		Name: sonarqube ( can be any string )
+		Server URL: http://192.168.40.128:9002 < http://<machine IP of where sonarqube is installed>:<port on which sonarqube is running>
+		Server authentication token: < the token you will get it when you login to sonarqube console )
+
+=================================================================================================================
